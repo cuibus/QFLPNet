@@ -11,28 +11,30 @@ public class FuzzyToken {
         fuzzify(crispInput);
     }
 
-    public void fuzzify(double crispInput) {
+    public static FuzzyToken fuzzify(double crispInput) {
+        FuzzyToken output = new FuzzyToken();
         if (crispInput <= 1.0) {
-            membershipDegrees[0] = 1.0;
-            membershipDegrees[1] = 0.0;
-            membershipDegrees[2] = 0.0;
-            membershipDegrees[3] = 0.0;
-            return;
+            output.membershipDegrees[0] = 1.0;
+            output.membershipDegrees[1] = 0.0;
+            output.membershipDegrees[2] = 0.0;
+            output.membershipDegrees[3] = 0.0;
+            return output;
         }
         if (crispInput >= 4.0) {
-            membershipDegrees[0] = 0.0;
-            membershipDegrees[1] = 0.0;
-            membershipDegrees[2] = 0.0;
-            membershipDegrees[3] = 1.0;
-            return;
+            output.membershipDegrees[0] = 0.0;
+            output.membershipDegrees[1] = 0.0;
+            output.membershipDegrees[2] = 0.0;
+            output.membershipDegrees[3] = 1.0;
+            return output;
         }
-        membershipDegrees[0] = calculateMembership(crispInput, FuzzyValue.A1.value);
-        membershipDegrees[1] = calculateMembership(crispInput, FuzzyValue.A2.value);
-        membershipDegrees[2] = calculateMembership(crispInput, FuzzyValue.A3.value);
-        membershipDegrees[3] = calculateMembership(crispInput, FuzzyValue.A4.value);
+        output.membershipDegrees[0] = calculateMembership(crispInput, FuzzyValue.A1.value);
+        output.membershipDegrees[1] = calculateMembership(crispInput, FuzzyValue.A2.value);
+        output.membershipDegrees[2] = calculateMembership(crispInput, FuzzyValue.A3.value);
+        output.membershipDegrees[3] = calculateMembership(crispInput, FuzzyValue.A4.value);
+        return output;
     }
 
-    private double calculateMembership(double input, int center) {
+    private static double calculateMembership(double input, int center) {
         double distance = Math.abs(input - center);
         if (distance >= 1.0) return 0.0;
         return 1.0 - distance;

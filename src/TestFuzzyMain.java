@@ -2,33 +2,32 @@ import fuzzy.*;
 
 public class TestFuzzyMain {
     public static void main(String[] args) {
-        FuzzyToken fuzzyToken = new FuzzyToken();
         System.out.println("=== Fuzzy Logic System Demo ===\n");
 
         // Example 1 - FUZZIFY&DEFFUZIFY - normal input
         System.out.println("Input: 2.3");
-        fuzzyToken.fuzzify(2.3);
+        FuzzyToken token1 = FuzzyToken.fuzzify(2.3);
         System.out.print("Membership vector: ");
-        System.out.println(fuzzyToken);
-        System.out.println("Defuzzified: " + fuzzyToken.defuzzify());
+        System.out.println(token1);
+        System.out.println("Defuzzified: " + token1.defuzzify());
 
         System.out.println();
 
         // Example 2 - FUZZIFY&DEFFUZIFY - Edge case: less than 1
         System.out.println("Input: 0.5 (< 1, should be 100% A1)");
-        fuzzyToken.fuzzify(0.5);
+        FuzzyToken token2 = FuzzyToken.fuzzify(0.5);
         System.out.print("Membership vector: ");
-        System.out.println(fuzzyToken);
-        System.out.println("Defuzzified: " + fuzzyToken.defuzzify());
+        System.out.println(token2);
+        System.out.println("Defuzzified: " + token2.defuzzify());
 
         System.out.println();
 
         // Example 3 - FUZZIFY&DEFFUZIFY - Edge case: greater than 4
         System.out.println("Input: 5.0 (> 4, should be 100% A4)");
-        fuzzyToken.fuzzify(5.0);
+        FuzzyToken token3 = FuzzyToken.fuzzify(5.0);
         System.out.print("Membership vector: ");
-        System.out.println(fuzzyToken);
-        System.out.println("Defuzzified: " + fuzzyToken.defuzzify());
+        System.out.println(token3);
+        System.out.println("Defuzzified: " + token3.defuzzify());
 
 
         // APPLY RULES - prepare inputs
@@ -36,11 +35,8 @@ public class TestFuzzyMain {
         System.out.println("=== Fuzzy Rules Tables Demo ===");
 
         // Create input fuzzy tokens
-        FuzzyToken input1 = new FuzzyToken();
-        FuzzyToken input2 = new FuzzyToken();
-
-        input1.fuzzify(2.5);
-        input2.fuzzify(3.2);
+        FuzzyToken input1 = FuzzyToken.fuzzify(2.5);
+        FuzzyToken input2 = FuzzyToken.fuzzify(3.2);
 
         System.out.println("\nInput 1 (2.5):");
         System.out.println(input1);

@@ -18,10 +18,8 @@ public class TestQFLPNMain {
 
         System.out.println("===Test execute QFLPN net===");
 
-        FuzzyToken input1 = new FuzzyToken();
-        FuzzyToken input2 = new FuzzyToken();
-        input1.fuzzify(2.5);
-        input2.fuzzify(3.2);
+        FuzzyToken input1 = FuzzyToken.fuzzify(2.5);
+        FuzzyToken input2 = FuzzyToken.fuzzify(3.2);
 
         System.out.println("\nInput 1 (2.5): " + input1);
         System.out.println("Input 2 (3.2):" + input2);
